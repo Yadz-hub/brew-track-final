@@ -81,3 +81,4 @@ function BreweryList({ breweries }: Props): ReactElement {
 }
 
 export default BreweryList;
+
