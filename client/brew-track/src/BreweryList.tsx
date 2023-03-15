@@ -49,13 +49,10 @@ function BreweryList({ breweries }: Props): ReactElement {
               </Typography>
               <Box sx={{ mt: 2 }}>
                 <Typography variant="subtitle2" gutterBottom>
-                  Type: {brewery.breweryType}
-                </Typography>
-                <Typography variant="subtitle2" gutterBottom>
                   Phone: {brewery.phone}
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
-                  {brewery.degreesCelcius} Degrees Celcius
+                  Temperature: {brewery.degreesCelcius ? brewery.degreesCelcius + ' Degrees Celcius': 'No Temperature data for this brewery - Sorry :('} 
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
                   Website:{" "}
