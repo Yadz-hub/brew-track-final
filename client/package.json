@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mui/material": "^5.11.12"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}
