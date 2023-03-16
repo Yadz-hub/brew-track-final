@@ -40,6 +40,7 @@ function App() {
     try {
       await fetch("http://localhost:5001/api/user", {
         method: "POST",
+        mode: 'no-cors',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       });
