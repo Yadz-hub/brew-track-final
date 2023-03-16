@@ -11,7 +11,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
 
 interface BreweryDetails {
   id: number;
@@ -89,12 +88,13 @@ app.get("/api/temperature", async (req: Request, res: Response) => {
   }
 });
 
-const saltRounds = 10;
 const plainTextPassword = 'myPassword123';
 
 app.post("/api/user", async (req: Request, res: Response) => {
   const user = req.body;
 
+  console.log('--------------here!!!');
+  
   try {
     // check if user already exists
     const existingUser = await UserModel.findOne({ email: user.email });
@@ -105,7 +105,7 @@ app.post("/api/user", async (req: Request, res: Response) => {
     // generate salt and hash password
     const saltRounds = 10;
     const plainTextPassword = user.password;
-    bcrypt.hash(plainTextPassword, saltRounds, async (err: Error, hash:string) => {
+    bcrypt.hash(plainTextPassword, saltRounds, async (err: Error | undefined, hash:string) => {
       if (err) {
         console.error(err);
         return res.status(500).send("Error saving user");
@@ -126,7 +126,7 @@ app.post("/api/user", async (req: Request, res: Response) => {
 
 // compare hash with plain text password
 const hashFromDatabase = '$2b$10$A1bEih9XrZq3fDTdPRfHNOVGiV4N4gq3lxV.lI4Bk4cNAbX5S5Wy';
-bcrypt.compare(plainTextPassword, hashFromDatabase, (err: Error, result: boolean) => {
+bcrypt.compare(plainTextPassword, hashFromDatabase, (err: Error | undefined, result: boolean) => {
   if (err) {
     console.error(err);
   } else if (result) {
